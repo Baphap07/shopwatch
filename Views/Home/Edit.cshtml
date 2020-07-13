@@ -1,0 +1,138 @@
+﻿@model HomeEditViewModel
+@{
+    ViewBag.Title = "Edit Employee";
+    var avata = $"/img/{ (Model.Avatar ?? "nonavatar.png")}";
+}
+
+    <form enctype="multipart/form-data" asp-controller="Home" asp-action="Edit" method="post" class="mt-2">
+        <input hidden asp-for="Id" />
+        <input hidden asp-for="Avatar" />
+        <div class="row form-groud">
+            <div class="col-sm-2">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-groud">
+            <div class="col-sm-2">
+                <label asp-for="Brand"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-groud">
+            <div class="col-sm-2">
+                <label asp-for="Radius"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Radius" class="form-control" />
+                <span asp-validation-for="Radius" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-groud">
+            <div class="col-sm-2">
+                <label asp-for="Thickness"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Thickness" class="form-control" />
+                <span asp-validation-for="Thickness" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-groud">
+            <div class="col-sm-2">
+                <label asp-for="Cord"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Cord" class="form-control" />
+                <span asp-validation-for="Cord" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-groud">
+            <div class="col-sm-2">
+                <label asp-for="Glasses"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Glasses" class="form-control" />
+                <span asp-validation-for="Glasses" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-groud">
+            <div class="col-sm-2">
+                <label asp-for="water_proof"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="water_proof" class="form-control" />
+                <span asp-validation-for="water_proof" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-groud">
+            <div class="col-sm-2">
+                <label asp-for="Guarantee"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Guarantee" class="form-control" />
+                <span asp-validation-for="Guarantee" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-groud">
+            <div class="col-sm-2">
+                <label asp-for="Price"></label>
+            </div>
+            <div class="col-sm-10">
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-groud">
+            <div class="col-sm-2">
+                <label asp-for="AvatarPath"></label>
+            </div>
+            <div class="col-sm-10">
+                <div class="custom-file">
+                    <input class="custom-file-input" asp-for="AvatarPath">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+        </div>
+        <div class="row form-groud">
+            <div class="col-sm-2">
+                <label asp-for="CategoryId"></label>
+            </div>
+            <div class="col-sm-10">
+                <select asp-for="CategoryId" class="custom-select">
+                    <option value="">Select a Category</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row col-4 offset-4">
+            <img src="@avata" style="height:250px;width:auto" />
+        </div>
+
+
+        <div class="row form-groud">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-danger">Update</button>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-dark">Back</a>
+            </div>
+
+        </div>
+
+
+    </form>
+
+@section Scripts{
+    <script>
+$(document).ready(function () {
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        });</script>
+}
+

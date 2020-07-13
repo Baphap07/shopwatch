@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Access Denied";
+}
+
+<div class="alert alert-danger my-2">
+    <h1>@ViewBag.Title</h1>
+    <hr />
+    <h4> You do not have permision to see this rousers</h4>
+</div>
+<a asp-controller="Home" asp-action="Index" class=" btn btn-outline-warning">
+    Click here to see all products
+</a>

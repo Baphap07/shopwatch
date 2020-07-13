@@ -1,0 +1,39 @@
+﻿@model IEnumerable<UserViewModel>
+@{
+    ViewBag.Title = " Managetment User";
+}
+
+<h3>@ViewBag.Title</h3>
+<a asp-controller="User" asp-action="Create" class="btn btn-dark">Create</a>
+
+<table class="table table-bordered table-hover mt2">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var user in Model)
+            {
+        <tr>
+            <td>@user.UserId</td>
+            <td>@user.Email</td>
+            <td>@user.City</td>
+            <td>@user.Address</td>
+            <td>@user.RolesName</td>
+            <td>
+                <a asp-controller="User" asp-action="Edit" asp-route-id="@user.UserId" class="btn btn-primary">Edit</a>
+                <a asp-controller="User" asp-action="Delete" asp-route-id="@user.UserId" class="btn btn-dark">Delete</a>
+            </td>
+        </tr>
+            }
+        }
+    </tbody>
+</table>

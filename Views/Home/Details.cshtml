@@ -1,0 +1,88 @@
+﻿@model HomeDetailViewModel
+@inject SignInManager<ApplicationUser> signInManager
+@using Microsoft.AspNetCore.Identity;
+
+@{
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = ViewBag.Titlename;
+    //var employee = ViewBag.Employee as Employee;
+    var avata = $"/img/{ (Model.Product.Avatar ?? "nonavatar.png")}";
+}
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card-header">
+            <img src="@avata" class="card-img-top myimg" asp-append-version="true" />
+        </div>
+        <div class="card-footer text-center">
+
+            <a asp-controller="Home" asp-action="Index" class="btn btn-info">Back</a>
+            @if (signInManager.IsSignedIn(User))
+            {
+                if (User.IsInRole("System Admin") || User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Home" asp-action="Edit" asp-route-id=@Model.Product.Id class="btn btn-primary">Edit</a>
+                    <a asp-controller="Home" asp-action="Delete" asp-route-id=@Model.Product.Id class="btn btn-danger">Delete</a>
+                }
+            }
+
+
+        </div>
+
+
+    </div>
+    <div class="col-sm-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><h1>Watch Parameters</h1></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>@Model.Product.Name</td>
+
+                </tr>
+                <tr>
+                    <td>Brand</td>
+                    <td>@Model.Product.Brand</td>
+
+                </tr>
+                <tr>
+                    <td>Radius</td>
+                    <td>@Model.Product.Radius</td>
+                </tr>
+                <tr>
+                    <td>Thickness</td>
+                    <td>@Model.Product.Thickness</td>
+                </tr>
+                <tr>
+                    <td>Cord</td>
+                    <td>@Model.Product.Cord</td>
+                </tr>
+                <tr>
+                    <td>Glasses</td>
+                    <td>@Model.Product.Glasses</td>
+                </tr>
+                <tr>
+                    <td>water_proof</td>
+                    <td>@Model.Product.water_proof</td>
+                </tr>
+                <tr>
+                    <td>Guarantee</td>
+                    <td>@Model.Product.Guarantee</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>@Model.Product.Price $</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
